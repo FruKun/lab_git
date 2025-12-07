@@ -25,4 +25,12 @@ void print(std::vector<std::string> &list) {
 }
 
 void write(std::string fileOutput, std::vector<std::string> &list) {
+     std::ofstream outputFile(fileOutput);
+
+
+    for (const auto& line : list) {
+        outputFile << line << std::endl;
+    }
+
+    outputFile.close(); 
 }
