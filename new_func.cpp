@@ -1,21 +1,23 @@
 #include "new_func.h"
 #include <iostream>
 #include <fstream>
-
-void read(std::string fileInput, std::vector<std::string> &list) {
-    std::ifstream inputFile(fileInput);
-
-    if (!inputFile.is_open()) {
-        std::cout << "file is not open" << fileInput << std::endl;
+void read(std::string fileInput, std::vector<std::string> &list)
+{
+    std::ifstream file(fileInput);
+    if (!file.is_open())
+    {
+        std::cout << "file " << fileInput << " is not open\n";
         return;
     }
-
-    std::string line;
-    while (std::getline(inputFile, line)) {
-        list.push_back(line);
+    std::string temp;
+    while (!file.eof())
+    {
+        std::getline(file, temp);
+        if (!file.fail())
+            list.push_back(temp);
     }
-
-    inputFile.close();
+    file.close();
+    return;
 }
 
 void print(std::vector<std::string> &list) {
