@@ -1,5 +1,5 @@
+#include "new_func.h"
 #include <iostream>
-#include <vector>
 #include <fstream>
 void read(std::string fileInput, std::vector<std::string> &list)
 {
@@ -20,11 +20,19 @@ void read(std::string fileInput, std::vector<std::string> &list)
     return;
 }
 
-void print(std::vector<std::string> &list)
-{
-    return;
+void print(std::vector<std::string> &list) {
+    for (size_t i = 0; i < list.size(); ++i) {
+        std::cout << i + 1 << ". " << list[i] << std::endl;
+    }
 }
-void write(std::string fileOutput, std::vector<std::string> &list)
-{
-    return;
+
+void write(std::string fileOutput, std::vector<std::string> &list) {
+     std::ofstream outputFile(fileOutput);
+
+
+    for (const auto& line : list) {
+        outputFile << line << std::endl;
+    }
+
+    outputFile.close(); 
 }
